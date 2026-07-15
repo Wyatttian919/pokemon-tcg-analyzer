@@ -35,34 +35,29 @@ The system shall:
 - Extensible database design
 - RESTful API architecture
 - Scalable backend structure
-## 6. Core Data Model
+## 6. High-Level Architecture
+
+
+## 7. System Overview
+
 User
- │
- └── CollectionItem
-          │
-          ├── Card
-          │
-          └── Acquisition
 
-Card
- │
- ├── Set
- │
- └── PriceHistory
-## 7. MVP Scope
-The first version will include:
+↓
 
-- Card search
-- Card detail pages
-- User authentication
-- Personal collection management
-- Collection dashboard
-## 8. Future Expansion
-Planned features include:
+Frontend (React)
 
-- AI-powered collection advisor
-- Card image recognition
-- Pack opening history
-- Pack Expected Value (EV) analysis
-- Collection ROI analysis
-- Market trend predictiongit
+↓
+
+REST API
+
+↓
+
+Backend (FastAPI)
+
+↓
+
+Database
+
++
+
+Pokémon API

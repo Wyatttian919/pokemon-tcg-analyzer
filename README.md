@@ -161,6 +161,17 @@ pokemon-tcg-analyzer/
 - Deploy frontend and backend
 - Add automated testing
 - Implement CI/CD pipeline
+
+## MVP
+
+The first version will include:
+
+- Card search
+- Card detail pages
+- User authentication
+- Personal collection management
+- Collection dashboard
+
 ## Future Improvements
 
 Potential future improvements include:

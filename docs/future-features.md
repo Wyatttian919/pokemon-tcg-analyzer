@@ -19,3 +19,13 @@ PackOpening
 PackCard
 
 PackStatistics
+
+### Future Expansion
+Planned features include:
+
+- AI-powered collection advisor
+- Card image recognition
+- Pack opening history
+- Pack Expected Value (EV) analysis
+- Collection ROI analysis
+- Market trend predictiongit
