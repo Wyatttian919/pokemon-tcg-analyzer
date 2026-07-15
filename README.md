@@ -110,6 +110,7 @@ pokemon-tcg-analyzer/
 ├── docs/ # Project documentation
 ├── README.md
 └── .gitignore
+```
 
 ## Roadmap
 
