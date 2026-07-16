@@ -1,8 +1,4 @@
-# ADR-001
-
-## Title
-
-Hybrid Card Storage Strategy
+# ADR-001 Hybrid Card Storage Strategy
 
 ## Status
 
