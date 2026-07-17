@@ -15,6 +15,7 @@ env/
 *.log
 
 # Database
+*.db
 *.sqlite3
 
 # Node
