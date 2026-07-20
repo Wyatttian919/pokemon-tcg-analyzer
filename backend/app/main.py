@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import card, user
+from app.routers import card, user, collection_items
 
 app = FastAPI(
     title="Pokémon TCG Analyzer API",
@@ -9,6 +9,7 @@ app = FastAPI(
 
 app.include_router(user.router)
 app.include_router(card.router)
+app.include_router(collection_items.router)
 
 @app.get("/")
 def root():

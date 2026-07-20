@@ -11,7 +11,7 @@ from sqlalchemy import (
     Text,
 )
 
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .base import Base
 
@@ -82,4 +82,16 @@ class CollectionItem(Base):
         DateTime,
         default=datetime.utcnow,
         onupdate=datetime.utcnow
+    )
+
+
+    user = relationship(
+        "User",
+        back_populates="collection_items"
+    )
+
+
+    card = relationship(
+        "Card",
+        back_populates="collection_items"
     )

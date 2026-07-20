@@ -68,3 +68,17 @@ class CardResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+
+class CardSimpleResponse(BaseModel):
+
+    id: int
+
+    name: str
+
+    number: str
+
+
+    class Config:
+        from_attributes = True

@@ -25,3 +25,15 @@ class UserUpdate(BaseModel):
     username: Optional[str] = None
     
     email: Optional[str] = None
+
+
+
+class UserSimpleResponse(BaseModel):
+
+    id: int
+
+    username: str
+
+
+    class Config:
+        from_attributes = True

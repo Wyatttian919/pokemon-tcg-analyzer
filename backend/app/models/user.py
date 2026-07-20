@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from sqlalchemy import String, DateTime
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .base import Base
 
@@ -46,4 +46,10 @@ class User(Base):
         DateTime,
         default=datetime.utcnow,
         onupdate=datetime.utcnow
+    )
+
+
+    collection_items = relationship(
+        "CollectionItem",
+        back_populates="user"
     )
