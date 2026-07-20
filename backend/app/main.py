@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import card
+from app.routers import card, user
 
 app = FastAPI(
     title="Pokémon TCG Analyzer API",
@@ -7,6 +7,7 @@ app = FastAPI(
     version="1.0.0"
 )
 
+app.include_router(user.router)
 app.include_router(card.router)
 
 @app.get("/")
