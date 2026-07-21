@@ -16,7 +16,8 @@ def create_card(
 
 
     if existing_card:
-        return None
+        print("RETURN EXISTING CARD")
+        return existing_card
 
 
     card = Card(
@@ -38,6 +39,7 @@ def create_card(
 
     db.refresh(card)
 
+    print("RETURN NEW CARD")
     return card
 
 

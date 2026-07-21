@@ -66,7 +66,13 @@ class Card(Base):
         onupdate=datetime.utcnow
     )
 
-    collection_items = relationship(
+    collection_items: Mapped[list["CollectionItem"]] = relationship(
         "CollectionItem",
         back_populates="card"
+    )
+
+
+    set: Mapped["PokemonSet"] = relationship(
+        "PokemonSet",
+        back_populates="cards"
     )

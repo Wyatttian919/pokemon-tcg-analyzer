@@ -1,7 +1,7 @@
 from datetime import date, datetime
 
 from sqlalchemy import String, Date, DateTime
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .base import Base
 
@@ -63,6 +63,11 @@ class PokemonSet(Base):
         onupdate=datetime.utcnow
     )
 
+
+    cards: Mapped[list["Card"]] = relationship(
+        "Card",
+        back_populates="set"
+    )
 
 
 
