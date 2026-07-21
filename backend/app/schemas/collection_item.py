@@ -58,3 +58,21 @@ class CollectionItemResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+
+class CollectionItemListResponse(BaseModel):
+
+    id: int
+
+    quantity: int
+
+    condition: str
+
+    purchase_price: Decimal | None
+
+    card: CardSimpleResponse
+
+
+    class Config:
+        from_attributes = True

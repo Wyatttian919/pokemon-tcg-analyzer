@@ -9,6 +9,12 @@ from app.services.user_service import (
     update_user,
     delete_user
 )
+from app.services.collection_item_service import (
+    get_user_collection
+)
+from app.schemas.collection_item import (
+    CollectionItemListResponse
+)
 
 
 router = APIRouter(
@@ -47,6 +53,25 @@ def read_user(
         db,
         user_id
     )
+
+
+
+@router.get(
+    "/{user_id}/collection",
+    response_model=list[CollectionItemListResponse]
+)
+def get_user_collection_endpoint(
+    user_id: int,
+    db: Session = Depends(get_db)
+):
+
+    collection = get_user_collection(
+        db,
+        user_id
+    )
+
+    return collection
+
 
 
 @router.put(

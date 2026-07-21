@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+# from fastapi import HTTPException
 
 from app.models.collection_item import CollectionItem
 from app.models.user import User
@@ -15,7 +16,7 @@ def create_collection_item(
     db: Session,
     item_data: CollectionItemCreate
 ):
-
+       
     user = db.query(User).filter(
         User.id == item_data.user_id
     ).first()
@@ -34,6 +35,28 @@ def create_collection_item(
         return None
 
 
+    existing_item = db.query(CollectionItem).filter(
+            CollectionItem.user_id == item_data.user_id,
+            CollectionItem.card_id == item_data.card_id
+        ).first()
+
+
+    if existing_item:
+        existing_item.quantity += item_data.quantity
+
+        if item_data.purchase_price is not None:
+            existing_item.purchase_price = item_data.purchase_price
+
+        if item_data.condition is not None:
+            existing_item.condition = item_data.condition
+
+
+        db.commit()
+
+        db.refresh(existing_item)
+
+        return existing_item
+    
     item = CollectionItem(
         user_id=item_data.user_id,
         card_id=item_data.card_id,
@@ -80,8 +103,11 @@ def update_collection_item(
 
 
     if item is None:
+        # raise HTTPException(
+        #     status_code=400,
+        #     detail="Collection item already exists or invalid user/card"
+        # )
         return None
-
 
     if item_data.quantity is not None:
         item.quantity = item_data.quantity
@@ -135,3 +161,14 @@ def delete_collection_item(
 
 
     return item
+
+
+
+def get_user_collection(
+    db: Session,
+    user_id: int
+):
+
+    return db.query(CollectionItem).filter(
+        CollectionItem.user_id == user_id
+    ).all()

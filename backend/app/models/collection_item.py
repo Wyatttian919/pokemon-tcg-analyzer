@@ -9,6 +9,7 @@ from sqlalchemy import (
     Numeric,
     String,
     Text,
+    UniqueConstraint
 )
 
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -20,6 +21,15 @@ from .base import Base
 class CollectionItem(Base):
     
     __tablename__="collection_items"
+
+
+    __table_args__ = (
+        UniqueConstraint(
+            "user_id",
+            "card_id",
+            name="unique_user_card_collection"
+        ),
+    )
 
 
     id: Mapped[int] = mapped_column(

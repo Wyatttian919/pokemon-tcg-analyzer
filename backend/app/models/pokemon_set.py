@@ -29,6 +29,13 @@ class PokemonSet(Base):
     )
 
 
+    language: Mapped[str] = mapped_column(
+            String(100),
+            nullable=False,
+            default="English"
+    )
+
+
     series: Mapped[str | None] = mapped_column(
         String(100)
     )

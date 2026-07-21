@@ -39,8 +39,8 @@ def create_collection_item_endpoint(
 
     if item is None:
         raise HTTPException(
-            status_code=404,
-            detail="User or Card not found"
+            status_code=400,
+            detail="Collection item already exists or invalid user/card"
         )
 
     return item
