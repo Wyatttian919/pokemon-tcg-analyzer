@@ -39,3 +39,30 @@ def get_or_create_set(
 
 
     return new_set
+
+
+
+def get_set(
+    db: Session,
+    set_id: int
+):
+
+    return db.query(PokemonSet).filter(
+        PokemonSet.id == set_id
+    ).first()
+
+
+
+def get_set_cards(
+    db: Session,
+    set_id: int
+):
+
+    pokemon_set = db.query(PokemonSet).filter(
+        PokemonSet.id == set_id
+    ).first()
+
+    if pokemon_set is None:
+        return None
+
+    return pokemon_set.cards

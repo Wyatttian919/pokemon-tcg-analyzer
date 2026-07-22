@@ -7,7 +7,7 @@ db = SessionLocal()
 
 card = sync_card(
     db,
-    "sv3-1"
+    "sv3-223"
 )
 
 
@@ -18,5 +18,5 @@ if card:
     print(card.name)
     print(card.set.name)
 
-    
+
 db.close()

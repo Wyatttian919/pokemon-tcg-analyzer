@@ -6,7 +6,9 @@ from app.core.database import get_db
 from app.schemas.card import (
     CardCreate,
     CardUpdate,
-    CardResponse
+    CardResponse,
+    CardSearchResponse,
+    CardDetailResponse
 )
 
 from app.services.card_service import (
@@ -16,10 +18,29 @@ from app.services.card_service import (
     delete_card
 )
 
+from app.services.card_search_service import search_cards
+
 router = APIRouter(
     prefix="/cards",
     tags=["Cards"]
 )
+
+
+@router.get(
+    "/search",
+    response_model=list[CardSearchResponse]
+)
+def search_cards_endpoint(
+    name: str,
+    db: Session = Depends(get_db)
+):
+
+    cards = search_cards(
+        db,
+        name
+    )
+
+    return cards
 
 
 @router.post(
@@ -47,7 +68,7 @@ def create_card_endpoint(
 
 @router.get(
     "/{card_id}",
-    response_model=CardResponse
+    response_model=CardDetailResponse
 )
 def get_card_endpoint(
     card_id: int,
@@ -107,7 +128,10 @@ def delete_card_endpoint(
     db: Session = Depends(get_db)
 ):
 
-    card = delete_card(...)
+    card = delete_card(
+        db,
+        card_id
+    )
 
     if card is None:
         raise HTTPException(
