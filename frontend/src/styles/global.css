@@ -19,6 +19,8 @@
 
     --text-color:#333;
 
+    --text-secondary:#666;
+
 
     --border-radius:14px;
 
@@ -35,6 +37,12 @@
     --button-padding:10px 20px;
 
     --button-font-size:16px;
+
+    --border-color:#ddd;
+
+    --input-radius:8px;
+
+    --input-padding:12px 16px;
 
 }
 

@@ -24,6 +24,11 @@ function Navbar(){
             <div className="navbar-links">
 
                 <Link to="/">
+                    Home
+                </Link>
+
+
+                <Link to="/search">
                     Search
                 </Link>
 

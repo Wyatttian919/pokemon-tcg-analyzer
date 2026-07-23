@@ -22,6 +22,11 @@
         background 0.2s ease,
         transform 0.2s ease;
 
+
+    display:inline-block;
+
+    text-decoration:none;
+
 }
 
 
@@ -31,5 +36,35 @@
     background:var(--primary-hover);
 
     transform:translateY(-2px);
+
+}
+
+
+.button-secondary {
+
+    background:var(--secondary-color);
+
+    color:#333;
+
+}
+
+
+.button-secondary:hover {
+
+    background:var(--secondary-hover);
+
+}
+
+
+.button-danger {
+
+    background:#d9534f;
+
+}
+
+
+.button-danger:hover {
+
+    background:#b52b27;
 
 }

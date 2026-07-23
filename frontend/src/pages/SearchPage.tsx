@@ -3,23 +3,20 @@ import { useState } from "react";
 import { searchCards } from "../api/cardApi";
 import type { CardSearchResult } from "../types/card";   
 import CardSearchResultCard from "../components/CardSearchResultCard";
-import "../styles/card-search.css"
+import "../styles/search.css"
+import SearchBar from "../components/SearchBar";
 
 
 function SearchPage() {
 
 
-    const [keyword, setKeyword] = useState("");
-
     const [cards, setCards] = useState<CardSearchResult[]>([]);
 
 
 
-    async function handleSearch() {
+    async function handleSearch(keyword:string) {
 
-        const result = await searchCards(
-            keyword
-        );
+        const result = await searchCards(keyword);
 
         setCards(result);
 
@@ -49,29 +46,9 @@ function SearchPage() {
             <div className="search-box">
 
 
-                <input
-
-                    value={keyword}
-
-                    onChange={
-                        (e)=>setKeyword(e.target.value)
-                    }
-
-                    placeholder="Search card name"
-
+                <SearchBar
+                    onSearch={handleSearch}
                 />
-
-
-                <button
-
-                    className="button"
-
-                    onClick={handleSearch}
-
-                >
-                    Search
-
-                </button>
 
 
             </div>

@@ -8,12 +8,10 @@
 
     padding:20px 40px;
 
-    background:white;
+    background:var(--card-background);
 
     border-bottom:
-        1px solid #ddd;
-
-    box-sizing:border-box;
+        1px solid var(--border-color);
 
 }
 
@@ -23,28 +21,6 @@
     margin:0;
 
     font-size:24px;
-
-}
-
-
-.navbar a {
-
-    text-decoration:none;
-
-    margin-left:20px;
-
-    font-size:24px;
-
-    font-weight:bold;
-
-    color:var(--primary-color);
-
-}
-
-
-.navbar a:hover {
-
-    color:#1976d2;
 
 }
 
@@ -73,6 +49,7 @@
 
     font-size:16px;
 
+    font-weight:500;
 
     transition:
         color 0.2s ease;

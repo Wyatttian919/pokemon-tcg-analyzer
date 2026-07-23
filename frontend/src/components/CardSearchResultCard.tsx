@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import type { CardSearchResult } from "../types/card";
 
-import "../styles/card-search.css";
+import "../styles/search.css";
 
 
 interface CardSearchResultCardProps {
