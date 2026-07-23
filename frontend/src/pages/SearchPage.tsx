@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
-import { searchCards} from "../api/cardApi";
-import type { CardSearchResult } from "../api/cardApi";   
+import { searchCards } from "../api/cardApi";
+import type { CardSearchResult } from "../types/card";   
+import CardSearchResultCard from "../components/CardSearchResultCard";
+import "../styles/card-search.css"
 
 
 function SearchPage() {
@@ -28,68 +29,82 @@ function SearchPage() {
 
     return (
 
-        <div>
+    <div className="search-page">
+
+
+        <section className="search-header">
+
 
             <h1>
                 Pokémon Card Search
             </h1>
 
 
-            <input
-
-                value={keyword}
-
-                onChange={
-                    (e) => setKeyword(e.target.value)
-                }
-
-                placeholder="Search card name"
-
-            />
+            <p>
+                Search your Pokémon cards collection
+            </p>
 
 
-            <button
-                onClick={handleSearch}
-            >
-                Search
-            </button>
 
+            <div className="search-box">
+
+
+                <input
+
+                    value={keyword}
+
+                    onChange={
+                        (e)=>setKeyword(e.target.value)
+                    }
+
+                    placeholder="Search card name"
+
+                />
+
+
+                <button
+
+                    className="button"
+
+                    onClick={handleSearch}
+
+                >
+                    Search
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <section className="search-results">
 
 
             {
-                cards.map(
-                    card => (
+                cards.map(card=>(
 
-                        <div key={card.id}>
+                    <CardSearchResultCard
 
-                        
-                            <Link to={`/cards/${card.id}`}>
-                                <h3>
-                                    {card.name}
-                                </h3>
-                            </Link>
+                        key={card.id}
 
+                        card={card}
 
-                            <p>
-                                #{card.number}
-                            </p>
+                    />
 
-
-                            <p>
-                                {card.rarity}
-                            </p>
-
-
-                        </div>
-
-                    )
-                )
+                ))
             }
 
 
-        </div>
+        </section>
 
-    );
+
+    </div>
+
+);
 
 }
 

@@ -8,6 +8,8 @@ import {
 import SearchPage from "./pages/SearchPage";
 import CardDetailPage from "./pages/CardDetailPage";
 import CollectionPage from "./pages/CollectionPage";
+import Navbar from "./components/Navbar";
+import Layout from "./components/Layout";
 
 
 function App() {
@@ -16,7 +18,20 @@ function App() {
 
         <BrowserRouter>
 
+
+            <Navbar />
+            
+
             <Routes>
+
+
+                <Route
+                    element={<Layout />}
+
+                ></Route>
+
+
+                
 
                 <Route
                     path="/"

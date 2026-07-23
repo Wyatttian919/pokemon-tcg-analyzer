@@ -1,0 +1,69 @@
+.card-detail {
+
+    max-width:900px;
+
+    margin:40px auto;
+
+}
+
+
+
+.card-detail h1 {
+
+    margin-bottom:20px;
+
+    text-align:center;
+
+}
+
+
+.card-detail-content {
+
+    display:flex;
+
+    gap:40px;
+
+    align-items:center;
+
+}
+
+
+.card-image-section {
+
+    flex:1;
+
+    text-align:center;
+
+}
+
+
+.card-info-section {
+
+    flex:1;
+
+}
+
+
+.card-image {
+
+    width:250px;
+
+    max-width:100%;
+
+    border-radius:12px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+
+.card-detail p {
+
+    margin:12px 0;
+
+    font-size:16px;
+
+}
+

@@ -1,0 +1,11 @@
+.card-container {
+
+    background:var(--card-background);
+
+    border-radius:var(--border-radius);
+
+    box-shadow:var(--shadow);
+
+    padding:30px;
+
+}

@@ -1,50 +1,13 @@
-import axios from "axios";
+import api from "./axios";
+import type {
 
+    CollectionItem,
 
-const API = axios.create({
+    CollectionItemCreate,
 
-    baseURL:"http://localhost:8000"
+    CollectionItemUpdate
 
-});
-
-
-
-export interface CollectionItem {
-
-    id:number;
-    quantity:number;
-    condition:string;
-    purchase_price?:number;
-
-    card:{
-
-        id:number;
-        name:string;
-        number:string;
-
-    };
-
-}
-
-
-
-export interface CollectionItemCreate {
-
-    user_id:number;
-    card_id:number;
-    quantity:number;
-    condition:string;
-
-}
-
-
-
-export interface CollectionItemUpdate {
-
-    quantity?: number;
-    condition?: string;
-
-}
+} from "../types/collection";
 
 
 
@@ -53,7 +16,7 @@ export async function getUserCollection(
 ):Promise<CollectionItem[]> {
 
 
-    const response = await API.get(
+    const response = await api.get(
         `/users/${userId}/collection`
     );
 
@@ -68,7 +31,7 @@ export async function addToCollection(
     data:CollectionItemCreate
 ){
 
-    const response = await API.post(
+    const response = await api.post(
         "/collection-items/",
         data
     );
@@ -83,7 +46,7 @@ export async function deleteCollectionItem(
     itemId:number
 ){
 
-    const response = await API.delete(
+    const response = await api.delete(
         `/collection-items/${itemId}`
     );
 
@@ -99,7 +62,7 @@ export async function updateCollectionItem(
     data:CollectionItemUpdate
 ){
 
-    const response = await API.put(
+    const response = await api.put(
         `/collection-items/${itemId}`,
         data
     );

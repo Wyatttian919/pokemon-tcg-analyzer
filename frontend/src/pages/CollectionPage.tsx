@@ -5,8 +5,9 @@ import {
 
 
 import { getUserCollection, deleteCollectionItem, updateCollectionItem} from "../api/collectionApi";
-import type { CollectionItem} from "../api/collectionApi";
-
+import type { CollectionItem} from "../types/collection";
+import CollectionItemCard from "../components/CollectionItemCard";
+import "../styles/collection.css";
 
 
 function CollectionPage(){
@@ -96,139 +97,72 @@ function CollectionPage(){
 
 
 
+            <div className="collection-list">
+
             {
                 items.map(item=>(
 
-                    <div
+                    <CollectionItemCard
+
                         key={item.id}
-                    >
+
+                        item={item}
 
 
-                        <h3>
-                            {item.card.name}
-                        </h3>
-
-
-
-                        {
+                        editing={
                             editingId === item.id
-
-                            ?
-
-                            (
-
-                                <>
-
-                                    <input
-
-                                        value={editQuantity}
-
-                                        onChange={
-                                            e =>
-                                            setEditQuantity(
-                                                Number(e.target.value)
-                                            )
-                                        }
-
-                                    />
-
-
-                                    <input
-
-                                        value={editCondition}
-
-                                        onChange={
-                                            e =>
-                                            setEditCondition(
-                                                e.target.value
-                                            )
-                                        }
-
-                                    />
-
-
-                                    <button
-                                        onClick={()=>
-                                            handleUpdate(item.id)
-                                        }
-                                    >
-                                        Save
-                                    </button>
-
-
-                                </>
-
-                            )
-
-
-                            :
-
-
-                            (
-
-                                <>
-
-                                    <p>
-                                        Quantity:
-                                        {item.quantity}
-                                    </p>
-
-
-                                    <p>
-                                        Condition:
-                                        {item.condition}
-                                    </p>
-
-
-
-                                    <button
-
-                                        onClick={()=>{
-
-                                            setEditingId(
-                                                item.id
-                                            );
-
-
-                                            setEditQuantity(
-                                                item.quantity
-                                            );
-
-
-                                            setEditCondition(
-                                                item.condition
-                                            );
-
-                                        }}
-
-                                    >
-                                        Edit
-                                    </button>
-
-
-                                </>
-
-                            )
-
                         }
 
 
-
-                        <button
-
-                            onClick={()=>
-                                handleDelete(item.id)
-                            }
-
-                        >
-                            Remove
-                        </button>
+                        editQuantity={
+                            editQuantity
+                        }
 
 
-                    </div>
+                        editCondition={
+                            editCondition
+                        }
+
+
+                        onEdit={()=>{
+
+                            setEditingId(item.id);
+
+
+                            setEditQuantity(
+                                item.quantity
+                            );
+
+
+                            setEditCondition(
+                                item.condition
+                            );
+
+                        }}
+
+
+                        onDelete={()=>handleDelete(item.id)}
+
+
+                        onSave={()=>handleUpdate(item.id)}
+
+
+                        setEditQuantity={
+                            setEditQuantity
+                        }
+
+
+                        setEditCondition={
+                            setEditCondition
+                        }
+
+
+                    />
 
                 ))
             }
+
+            </div>
 
 
         </div>

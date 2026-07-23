@@ -1,54 +1,17 @@
-import axios from "axios";
+import api from "./axios";
+import type {
+    CardSearchResult,
+    CardDetail
+} from "../types/card";
 
 
-const API = axios.create({
-    baseURL: "http://localhost:8000"
-});
-
-
-export interface CardSearchResult {
-    id: number;
-    name: string;
-    number: string;
-    rarity?: string;
-    image_url?: string;
-}
-
-
-export interface CardDetail {
-
-    id:number;
-
-    pokemon_api_id:string;
-
-    name:string;
-
-    number:string;
-
-    rarity?:string;
-
-    category?:string;
-
-    card_type?:string;
-
-    hp?:number;
-
-    image_url?:string;
-
-
-    set:{
-        id:number;
-        name:string;
-    };
-
-}
 
 
 export async function searchCards(
     name: string
 ): Promise<CardSearchResult[]> {
 
-    const response = await API.get(
+    const response = await api.get(
         "/cards/search",
         {
             params: {
@@ -68,7 +31,7 @@ export async function getCardDetail(
 ):Promise<CardDetail>{
 
 
-    const response = await API.get(
+    const response = await api.get(
         `/cards/${id}`
     );
 

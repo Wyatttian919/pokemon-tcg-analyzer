@@ -10,8 +10,9 @@ import {
 
 
 import {getCardDetail} from "../api/cardApi";
-import type {CardDetail} from "../api/cardApi";
+import type {CardDetail} from "../types/card";
 import {addToCollection} from "../api/collectionApi";
+import CardDetailCard from "../components/CardDetailCard";
 
 function CardDetailPage(){
 
@@ -96,59 +97,17 @@ function CardDetailPage(){
 
         <div>
 
+            <CardDetailCard
 
-            <h1>
-                {card.name}
-            </h1>
+                card={card}
 
+                onAdd={handleAddToCollection}
 
-            <img
-                src={card.image_url}
-                width="250"
+                added={added}
+
             />
 
-
-            <p>
-                Number: #{card.number}
-            </p>
-
-
-            <p>
-                Rarity: {card.rarity}
-            </p>
-
-
-            <p>
-                HP: {card.hp}
-            </p>
-
-
-            <p>
-                Type: {card.card_type}
-            </p>
-
-
-            <h3>
-                Set
-            </h3>
-
-
-            <p>
-                {card.set.name}
-            </p>
-
-
-            <button
-                onClick={handleAddToCollection}
-            >
-                {
-                    added
-                    ? "Added ✓"
-                    : "Add to Collection"
-                }
-            </button>
-
-
+    
         </div>
 
     );
